@@ -1,0 +1,37 @@
+{
+  "name": "multipurpose_app",
+  "version": "1.0.0",
+  "description": "A new Flutter project.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "git-cz",
+    "commit-coins": "git add lib/coins && git-cz",
+    "commit-diets": "git add lib/diets && git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vieerr/multipurpose-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vieerr/multipurpose-app/issues"
+  },
+  "homepage": "https://github.com/vieerr/multipurpose-app#readme",
+  "devDependencies": {
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "git-cz": "^4.9.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
