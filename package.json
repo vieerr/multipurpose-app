@@ -10,8 +10,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "git-cz",
-    "commit-coins": "git add lib/coins && git-cz",
-    "commit-diets": "git add lib/diets && git-cz"
+    "commit-coins": "git add lib/coins && git-cz --scope coins",
+    "commit-diet": "git add lib/diet && git-cz --scope diet",
+    "commit-perfect": "git add lib/perfect && git-cz --scope perfect",
+    "commit-POS": "git add lib/POS && git-cz --scope POS",
+    "commit-years": "git add lib/years && git-cz --scope years"
   },
   "repository": {
     "type": "git",
