@@ -4,9 +4,14 @@ import 'package:multipurpose_app/POS/model/product_model.dart';
 import 'package:multipurpose_app/POS/view/components/products_dropdown.dart';
 
 class InvoiceView extends StatefulWidget {
-  const InvoiceView({super.key, required this.controller});
+  const InvoiceView({
+    super.key,
+    required this.controller,
+    required this.invoiceNumber,
+  });
 
   final InvoiceController controller;
+  final int invoiceNumber;
 
   @override
   State<InvoiceView> createState() => _InvoiceViewState();
@@ -27,7 +32,15 @@ class _InvoiceViewState extends State<InvoiceView> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Factura #${widget.invoiceNumber}',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+        ),
         ProductsDropdown(onChanged: _onProductSelected),
         Expanded(
           child: ListView.builder(

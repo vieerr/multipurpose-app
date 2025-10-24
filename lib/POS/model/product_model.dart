@@ -8,7 +8,7 @@ class Product {
     required this.id,
     required this.name,
     required this.price,
-    this.quantity = 0,
+    this.quantity = 1,
   });
 
   void increaseQuantity(int amount) {

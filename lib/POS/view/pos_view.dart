@@ -12,7 +12,7 @@ class PosView extends StatefulWidget {
 }
 
 class _PosViewState extends State<PosView> {
-  InvoiceController _invoiceController = InvoiceController();
+  final InvoiceController _invoiceController = InvoiceController();
   final PosController _posController = PosController();
   bool _showHistory = false;
 
@@ -28,7 +28,8 @@ class _PosViewState extends State<PosView> {
         },
         onOpenNewCaja: () {
           setState(() {
-            _invoiceController = InvoiceController();
+            _invoiceController.resetInvoice();
+            _posController.resetInvoices();
             _showHistory = false;
           });
         },
@@ -38,7 +39,12 @@ class _PosViewState extends State<PosView> {
     return Scaffold(
       body: Column(
         children: [
-          Expanded(child: InvoiceView(controller: _invoiceController)),
+          Expanded(
+            child: InvoiceView(
+              controller: _invoiceController,
+              invoiceNumber: _posController.previousInvoices.length + 1,
+            ),
+          ),
         ],
       ),
       floatingActionButton: Column(
@@ -56,10 +62,30 @@ class _PosViewState extends State<PosView> {
           SizedBox(height: 16),
           FloatingActionButton.extended(
             onPressed: () {
+              final invoiceAdded = _posController.addInvoice(
+                _invoiceController.getInvoice(),
+              );
               setState(() {
-                _posController.addInvoice(_invoiceController.getInvoice());
                 _invoiceController.resetInvoice();
               });
+              if (invoiceAdded) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'Factura creada exitosamente',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    duration: Duration(seconds: 2),
+                    behavior: SnackBarBehavior.floating,
+                    backgroundColor: Colors.green,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    margin: EdgeInsets.only(top: 10, left: 10, right: 10),
+                    elevation: 0,
+                  ),
+                );
+              }
             },
             icon: Icon(Icons.receipt_long),
             label: Text('Facturar'),
