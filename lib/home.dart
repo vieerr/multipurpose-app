@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multipurpose_app/POS/view/pos_view.dart';
 import 'diet/controller/person_controller.dart';
 import 'diet/view/pages.dart';
 import 'coins/view/vuelto_view.dart';
@@ -48,7 +49,7 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: _bottomNavigationBar(),
       body: <Widget>[
-        Card(child: Center(child: Text("Inicio"))),
+        PosView(),
         VueltoPage(),
         AnioPage(),
         Card(child: Center(child: Text("Ejercicio 14"))),
