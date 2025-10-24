@@ -5,6 +5,7 @@ import 'diet/view/pages.dart';
 
 import 'coins/view/vuelto_view.dart';
 import 'years/view/anios_view.dart';
+import 'perfect/view/perfect_view.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -53,7 +54,7 @@ class _HomeState extends State<Home> {
         PosView(),
         VueltoPage(),
         AnioPage(),
-        Card(child: Center(child: Text("Ejercicio 14"))),
+        const PerfectPage(),
         DietPage(controller: controller),
       ][currentPageIndex],
     );
