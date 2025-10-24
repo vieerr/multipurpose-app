@@ -16,6 +16,61 @@ class _PosViewState extends State<PosView> {
   final PosController _posController = PosController();
   bool _showHistory = false;
 
+  void _showAddProductDialog() {
+    final nameController = TextEditingController();
+    final priceController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Agregar Producto'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(
+                labelText: 'Nombre del Producto',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 16),
+            TextField(
+              controller: priceController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: 'Precio',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text('Cancelar'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              if (nameController.text.isNotEmpty &&
+                  priceController.text.isNotEmpty) {
+                setState(() {
+                  _invoiceController.agregarProducto(
+                    DateTime.now().millisecondsSinceEpoch.toString(),
+                    nameController.text,
+                    priceController.text,
+                  );
+                });
+                Navigator.pop(context);
+              }
+            },
+            child: Text('Agregar'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_showHistory) {
@@ -49,6 +104,7 @@ class _PosViewState extends State<PosView> {
       ),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           FloatingActionButton.extended(
             onPressed: () {
@@ -58,6 +114,12 @@ class _PosViewState extends State<PosView> {
             },
             icon: Icon(Icons.close),
             label: Text('Cerrar Caja'),
+          ),
+          SizedBox(height: 16),
+          FloatingActionButton.extended(
+            onPressed: _showAddProductDialog,
+            icon: Icon(Icons.add),
+            label: Text('Otro Producto'),
           ),
           SizedBox(height: 16),
           FloatingActionButton.extended(
