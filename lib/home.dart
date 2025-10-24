@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'diet/controller/person_controller.dart';
+import 'diet/view/pages.dart';
 import 'coins/view/vuelto_view.dart';
 import 'years/view/anios_view.dart';
 
@@ -15,6 +16,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = PersonController();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -50,7 +52,7 @@ class _HomeState extends State<Home> {
         VueltoPage(),
         AnioPage(),
         Card(child: Center(child: Text("Ejercicio 14"))),
-        Card(child: Center(child: Text("Ejercicio 15"))),
+        DietPage(controller: controller),
       ][currentPageIndex],
     );
   }
