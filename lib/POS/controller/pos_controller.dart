@@ -8,12 +8,7 @@ class PosController {
     final price = double.tryParse(priceStr);
     if (price != null) {
       final product = Product(id: id, name: name, price: price);
-      if (!posModel.products.any((p) => p.id == id)) {
-        print("Agregando producto: $name");
-        posModel.addProduct(product);
-      } else {
-        print("El producto $name ya está en la lista, no se agrega de nuevo.");
-      }
+      posModel.addProduct(product);
     } else {
       throw Exception('Precio inválido');
     }

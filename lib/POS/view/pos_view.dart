@@ -48,7 +48,21 @@ class _PosViewState extends State<PosView> {
                   final producto = controller.getProducts()[index];
                   return ListTile(
                     title: Text(producto.name),
-                    subtitle: Text('Precio: ${producto.price}'),
+                    subtitle: Text(
+                      'Precio: ${producto.price}, Cantidad: ${producto.quantity.toString()}',
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(Icons.add),
+                      onPressed: () {
+                        setState(() {
+                          controller.agregarProducto(
+                            producto.id,
+                            producto.name,
+                            producto.price.toString(),
+                          );
+                        });
+                      },
+                    ),
                   );
                 },
               ),
