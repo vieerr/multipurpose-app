@@ -1,9 +1,9 @@
 import 'product_model.dart';
 
-class PosModel {
+class InvoiceModel {
   Set<Product> products = {};
 
-  PosModel({required this.products});
+  InvoiceModel({required this.products});
 
   void addProduct(Product product) {
     if (products.any((p) => p.id == product.id)) {

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:multipurpose_app/POS/controller/pos_controller.dart';
+import 'package:multipurpose_app/POS/controller/invoice_controller.dart';
 import 'package:multipurpose_app/POS/model/product_model.dart';
 import 'package:multipurpose_app/POS/view/components/products_dropdown.dart';
 
-class PosView extends StatefulWidget {
-  const PosView({super.key});
+class InvoiceView extends StatefulWidget {
+  const InvoiceView({super.key});
 
   @override
-  State<PosView> createState() => _PosViewState();
+  State<InvoiceView> createState() => _InvoiceViewState();
 }
 
-class _PosViewState extends State<PosView> {
-  final controller = PosController();
+class _InvoiceViewState extends State<InvoiceView> {
+  final controller = InvoiceController();
 
   // void _calcular() {
   //   final resultado = controller.calcularSueldo(
