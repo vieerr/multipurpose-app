@@ -1,0 +1,23 @@
+class Product {
+  final String id;
+  final String name;
+  final double price;
+  int quantity;
+
+  Product({
+    required this.id,
+    required this.name,
+    required this.price,
+    this.quantity = 1,
+  });
+
+  void increaseQuantity(int amount) {
+    quantity += amount;
+  }
+
+  void decreaseQuantity(int amount) {
+    if (quantity - amount >= 0) {
+      quantity -= amount;
+    }
+  }
+}

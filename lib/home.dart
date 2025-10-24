@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:multipurpose_app/POS/view/pos_view.dart';
+import 'diet/controller/person_controller.dart';
+import 'diet/view/pages.dart';
 
 import 'coins/view/vuelto_view.dart';
+import 'years/view/anios_view.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,6 +18,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = PersonController();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -45,11 +50,11 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: _bottomNavigationBar(),
       body: <Widget>[
-        Card(child: Center(child: Text("Inicio"))),
+        PosView(),
         VueltoPage(),
-        Card(child: Center(child: Text("Ejercicio 13"))),
+        AnioPage(),
         Card(child: Center(child: Text("Ejercicio 14"))),
-        Card(child: Center(child: Text("Ejercicio 15"))),
+        DietPage(controller: controller),
       ][currentPageIndex],
     );
   }
