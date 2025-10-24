@@ -14,4 +14,10 @@ class Product {
   void increaseQuantity(int amount) {
     quantity += amount;
   }
+
+  void decreaseQuantity(int amount) {
+    if (quantity - amount >= 0) {
+      quantity -= amount;
+    }
+  }
 }

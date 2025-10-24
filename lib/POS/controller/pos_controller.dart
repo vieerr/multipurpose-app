@@ -14,6 +14,10 @@ class PosController {
     }
   }
 
+  void disminuirCantidadProducto(String productId) {
+    posModel.decreaseProductQuantity(productId);
+  }
+
   List<Product> getProducts() {
     return List.unmodifiable(posModel.products);
   }

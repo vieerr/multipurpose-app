@@ -12,4 +12,15 @@ class PosModel {
     }
     products.add(product);
   }
+
+  void decreaseProductQuantity(String productId) {
+    final product = products.firstWhere(
+      (p) => p.id == productId,
+      orElse: () => throw Exception('Producto no encontrado'),
+    );
+    product.decreaseQuantity(1);
+    if (product.quantity == 0) {
+      products.removeWhere((p) => p.id == productId);
+    }
+  }
 }

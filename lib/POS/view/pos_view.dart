@@ -51,17 +51,30 @@ class _PosViewState extends State<PosView> {
                     subtitle: Text(
                       'Precio: ${producto.price}, Cantidad: ${producto.quantity.toString()}',
                     ),
-                    trailing: IconButton(
-                      icon: Icon(Icons.add),
-                      onPressed: () {
-                        setState(() {
-                          controller.agregarProducto(
-                            producto.id,
-                            producto.name,
-                            producto.price.toString(),
-                          );
-                        });
-                      },
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.remove),
+                          onPressed: () {
+                            setState(() {
+                              controller.disminuirCantidadProducto(producto.id);
+                            });
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.add),
+                          onPressed: () {
+                            setState(() {
+                              controller.agregarProducto(
+                                producto.id,
+                                producto.name,
+                                producto.price.toString(),
+                              );
+                            });
+                          },
+                        ),
+                      ],
                     ),
                   );
                 },
