@@ -5,6 +5,7 @@ import 'diet/controller/person_controller.dart';
 import 'diet/view/pages.dart';
 =======
 import 'package:multipurpose_app/POS/view/invoice_view.dart';
+import 'package:multipurpose_app/POS/view/pos_view.dart';
 
 >>>>>>> 727cc42 (refactor(POS): 💡 modify pos files to be invoice for future change)
 import 'coins/view/vuelto_view.dart';
@@ -54,7 +55,7 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: _bottomNavigationBar(),
       body: <Widget>[
-        InvoiceView(),
+        PosView(),
         VueltoPage(),
         AnioPage(),
         Card(child: Center(child: Text("Ejercicio 14"))),

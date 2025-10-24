@@ -21,4 +21,12 @@ class InvoiceController {
   List<Product> getProducts() {
     return List.unmodifiable(invoiceModel.products);
   }
+
+  InvoiceModel getInvoice() {
+    return InvoiceModel(products: Set.from(invoiceModel.products));
+  }
+
+  void resetInvoice() {
+    invoiceModel.products.clear();
+  }
 }
